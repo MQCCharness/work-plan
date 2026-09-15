@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="560" viewBox="0 0 1120 560" font-family="Microsoft YaHei, PingFang SC, Segoe UI, sans-serif">
+  <!-- 背景 -->
+  <rect x="0" y="0" width="1120" height="560" rx="12" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="30" y="42" font-size="20" font-weight="700" fill="#24292f">创业主线 Git 图 · work-plan</text>
+  <text x="30" y="66" font-size="12" fill="#57606a">main = 端侧AI落地服务商 ｜ feature/content = 内容获客线 ｜ feature/product = 哈机密产品线 ｜ 每次修改本图 = 一次真实 commit</text>
+
+  <!-- 图例 -->
+  <circle cx="850" cy="38" r="7" fill="#1a7f37"/>
+  <text x="862" y="42" font-size="12" fill="#24292f">已完成</text>
+  <circle cx="925" cy="38" r="7" fill="none" stroke="#0969da" stroke-width="3"/>
+  <text x="937" y="42" font-size="12" fill="#24292f">HEAD·当前</text>
+  <circle cx="1025" cy="38" r="7" fill="#ffffff" stroke="#57606a" stroke-width="2"/>
+  <text x="1037" y="42" font-size="12" fill="#24292f">未来</text>
+
+  <!-- 分支名 -->
+  <rect x="30" y="160" width="120" height="22" rx="11" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="42" y="175" font-size="12" fill="#7d4e00">feature/content</text>
+  <rect x="30" y="288" width="60" height="22" rx="11" fill="#ddf4e4" stroke="#1a7f37"/>
+  <text x="42" y="303" font-size="12" fill="#116329">main</text>
+  <rect x="30" y="408" width="120" height="22" rx="11" fill="#fbefff" stroke="#8250df"/>
+  <text x="42" y="423" font-size="12" fill="#6639ba">feature/product</text>
+
+  <!-- main 主线 -->
+  <path d="M 100 300 H 1050" stroke="#1a7f37" stroke-width="3" fill="none"/>
+
+  <!-- feature/content 分支：从 HEAD(490) 分叉，合并到 D+90(880) -->
+  <path d="M 490 300 C 550 300 560 180 630 180 H 790 C 845 180 850 300 880 300" stroke="#d4a72c" stroke-width="3" fill="none"/>
+
+  <!-- feature/product 分支：从 D+30(630) 分叉，合并到 1年(1010) -->
+  <path d="M 630 300 C 685 300 695 420 760 420 H 900 C 965 420 975 300 1010 300" stroke="#8250df" stroke-width="3" fill="none"/>
+
+  <!-- ===== main 提交节点 ===== -->
+  <!-- c1 -->
+  <circle cx="140" cy="300" r="9" fill="#1a7f37"/>
+  <text x="140" y="330" font-size="11" fill="#57606a" text-anchor="middle">a10f3e2</text>
+  <text x="140" y="346" font-size="12" fill="#24292f" text-anchor="middle">2025.10 论文实验收尾</text>
+  <!-- c2 -->
+  <circle cx="260" cy="300" r="9" fill="#1a7f37"/>
+  <text x="260" y="278" font-size="11" fill="#57606a" text-anchor="middle">b71c9d4</text>
+  <text x="260" y="262" font-size="12" fill="#24292f" text-anchor="middle">2026.05–08 视频流水线跑通</text>
+  <!-- c3 -->
+  <circle cx="380" cy="300" r="9" fill="#1a7f37"/>
+  <text x="380" y="330" font-size="11" fill="#57606a" text-anchor="middle">c3d8e91</text>
+  <text x="380" y="346" font-size="12" fill="#24292f" text-anchor="middle">2026.08–09 端侧调研·简历兜底</text>
+  <!-- HEAD -->
+  <circle cx="490" cy="300" r="12" fill="none" stroke="#0969da" stroke-width="3"/>
+  <circle cx="490" cy="300" r="5" fill="#0969da"/>
+  <text x="490" y="278" font-size="11" fill="#0969da" text-anchor="middle">d4e5f6a (HEAD)</text>
+  <text x="490" y="262" font-size="13" font-weight="700" fill="#0969da" text-anchor="middle">现在 · 战略定型</text>
+  <!-- D+30 -->
+  <circle cx="630" cy="300" r="9" fill="#ffffff" stroke="#57606a" stroke-width="2"/>
+  <text x="630" y="330" font-size="11" fill="#57606a" text-anchor="middle">e5f6a7b</text>
+  <text x="630" y="346" font-size="12" fill="#24292f" text-anchor="middle">D+30 4条实录+私域群</text>
+  <!-- D+60 -->
+  <circle cx="755" cy="300" r="9" fill="#ffffff" stroke="#57606a" stroke-width="2"/>
+  <text x="755" y="278" font-size="11" fill="#57606a" text-anchor="middle">f6a7b8c</text>
+  <text x="755" y="262" font-size="12" fill="#24292f" text-anchor="middle">D+60 首单付费咨询</text>
+  <!-- D+90（合并点 + tag） -->
+  <circle cx="880" cy="300" r="10" fill="#ffffff" stroke="#d4a72c" stroke-width="3"/>
+  <text x="880" y="330" font-size="11" fill="#57606a" text-anchor="middle">a7b8c9d</text>
+  <text x="880" y="346" font-size="12" fill="#24292f" text-anchor="middle">D+90 部署套餐 / 止损线</text>
+  <rect x="832" y="360" width="96" height="18" rx="4" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="880" y="373" font-size="10" fill="#7d4e00" text-anchor="middle">tag: v0.1 现金流为正</text>
+  <!-- 1年（合并点） -->
+  <circle cx="1010" cy="300" r="10" fill="#ffffff" stroke="#8250df" stroke-width="3"/>
+  <text x="1010" y="278" font-size="11" fill="#57606a" text-anchor="middle">b8c9d0e</text>
+  <text x="1010" y="262" font-size="12" fill="#24292f" text-anchor="middle">1年 服务现金流稳定</text>
+
+  <!-- ===== feature/content 提交节点 ===== -->
+  <circle cx="665" cy="180" r="9" fill="#ffffff" stroke="#d4a72c" stroke-width="2"/>
+  <text x="665" y="158" font-size="11" fill="#57606a" text-anchor="middle">c9d0e1f</text>
+  <text x="665" y="142" font-size="12" fill="#24292f" text-anchor="middle">硬核解析系列连更</text>
+  <circle cx="770" cy="180" r="9" fill="#ffffff" stroke="#d4a72c" stroke-width="2"/>
+  <text x="770" y="205" font-size="11" fill="#57606a" text-anchor="middle">d0e1f2a</text>
+  <text x="770" y="221" font-size="12" fill="#24292f" text-anchor="middle">案例复盘视频</text>
+
+  <!-- ===== feature/product 提交节点 ===== -->
+  <circle cx="800" cy="420" r="9" fill="#ffffff" stroke="#8250df" stroke-width="2"/>
+  <text x="800" y="448" font-size="11" fill="#57606a" text-anchor="middle">e1f2a3b</text>
+  <text x="800" y="464" font-size="12" fill="#24292f" text-anchor="middle">哈机密原型机(esp32+小智AI)</text>
+  <circle cx="905" cy="420" r="9" fill="#ffffff" stroke="#8250df" stroke-width="2"/>
+  <text x="905" y="448" font-size="11" fill="#57606a" text-anchor="middle">f2a3b4c</text>
+  <text x="905" y="464" font-size="12" fill="#24292f" text-anchor="middle">摩点众筹预售验证</text>
+
+  <!-- 3年远景（虚线延伸） -->
+  <path d="M 1050 300 H 1090" stroke="#57606a" stroke-width="2" stroke-dasharray="6 5"/>
+  <circle cx="1096" cy="300" r="7" fill="#ffffff" stroke="#57606a" stroke-width="2" stroke-dasharray="3 3"/>
+  <text x="1068" y="330" font-size="12" fill="#24292f" text-anchor="middle">3年: 工作室</text>
+  <text x="1068" y="346" font-size="12" fill="#24292f" text-anchor="middle">+ 产品矩阵</text>
+
+  <!-- 底部注释 -->
+  <text x="30" y="530" font-size="12" fill="#57606a">纪律：90 天内不属于「端侧AI落地」主线的 idea 一律冷藏 ｜ 止损线：D+90 私域零询单 → 换客户画像或换变现引擎，不回头追播放量</text>
+</svg>
