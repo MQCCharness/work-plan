@@ -3,3 +3,8 @@ sample/qc/
 sample/assets/*.ttc
 sample/assets/raw_*.txt
 sample/concat.txt
+sample/rec_terminal.mp4
+sample/segs/
+sample/qc/
+sample/concat*.txt
+sample/rec_ffmpeg.log
