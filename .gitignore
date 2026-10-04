@@ -1,0 +1,5 @@
+sample/segs/
+sample/qc/
+sample/assets/*.ttc
+sample/assets/raw_*.txt
+sample/concat.txt
