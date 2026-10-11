@@ -6,7 +6,7 @@ import io, os, json, subprocess
 BASE = r"G:\G_cursor\work-plan\sample"
 ASSETS = os.path.join(BASE, "assets")
 SEGS = os.path.join(BASE, "segs")
-REC = os.path.join(BASE, "rec_terminal.mp4")
+REC = os.path.join(BASE, "rec_primary.mp4")
 FONT = "sample/assets/msyh.ttc"
 FONT_B = "sample/assets/msyhbd.ttc"
 W, H = 1080, 1920
@@ -28,7 +28,7 @@ def ticker(text):
     return (f"drawbox=x=0:y={H-170}:w={W}:h=170:color=0xC8102E@1:t=fill,"
             + dt(text, 40, H-115, FONT, "white", x=f"w-mod(t*220\\,{1200+len(text)*44})"))
 
-CROP = "crop=1700:870:2780:410"
+CROP = "null"
 
 def build_rec(name, rec_start, segdur, audio, title, caption, tick, speedline=None):
     out = os.path.join(SEGS, f"{name}_v2.mp4")
@@ -47,11 +47,11 @@ def build_rec(name, rec_start, segdur, audio, title, caption, tick, speedline=No
 
 s3d = dur["s3_proof"] + 0.4
 s4d = dur["s4_demo"] + 0.4
-s3 = build_rec("s3", 6.5, s3d, os.path.join(ASSETS, "tts_s3_proof.mp3"),
+s3 = build_rec("s3", 8.0, s3d, os.path.join(ASSETS, "tts_s3_proof.mp3"),
                "就一个软件 一个模型文件", "llama.cpp 真实启动加载 · 一镜到底", "显卡小别硬上 GPU · 实测负优化")
 s4 = build_rec("s4", 9.0, s4d, os.path.join(ASSETS, "tts_s4_demo.mp3"),
                "写周报 改文案 答问题", "GLM-4-9B 全 GPU 真实生成过程",
-               "64G 内存游戏本 · 非工作站", speedline="42.7 t/s 实测")
+               "64G 内存游戏本 · 非工作站", speedline="41.5 t/s 实测")
 
 lst = os.path.join(BASE, "concat_v2.txt")
 parts = ["s1.mp4", "s2.mp4", "s3_v2.mp4", "s4_v2.mp4", "s5.mp4", "s6.mp4"]
