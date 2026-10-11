@@ -1,13 +1,59 @@
 #!/bin/bash
 cd /g/G_cursor/work-plan || exit 1
-cat >> details/Q22-样片v2真实录屏素材.md << 'EOF'
+cat > details/Q31-A2工牌开场版分镜.md << 'EOF'
+# Q31 · 2026-10-04｜A2 工牌开场版：文案 + 分镜 + 素材清单
 
-## v3 更新（2026-10-04 晚间）
+**结论：用户提议「举小米工牌遮名 + 自述一个月前用自研芯片部署 120B 模型的工程师」开场——采纳，是全片最强帧。开机前三检查：①「O3+D10020」型号必须确认已公开发布，未官宣则模糊化为「我们自研的新一代芯片」（保密红线）②工牌遮名字+工号+二维码（下半区全贴）③台词大众化：「一个月前，我把一个 1200 亿参数的大模型，塞进了我们自己做的芯片里」。**
 
-用户要求只录主显示器：gdigrab `-offset_x 0 -offset_y 0 -video_size 2560x1440` 直录主屏（DISPLAY5），FindWindow(ConsoleWindowClass,"LLM_DEMO") 强制窗口铺满主屏。产出 rec_primary.mp4（45s，41.5 t/s 实测行可见），S3/S4 换用全屏素材无需裁剪，S3 起点 8.0s 避开桌面闪现。最终版 `sample/A版样片_v3.mp4`（66.2s），抽帧终检通过。
+## A2 逐字稿
+
+- 0–5s（举工牌实拍）：「看清楚了，这不是网图。一个月前，我把一个 1200 亿参数的大模型，塞进了我们自己做的芯片里。」
+- 5–10s（放下工牌指自己）：「然后我发现一件更离谱的事——我教公司把 AI 装进盒子，我自己每个月还在给 AI 交 2000 块。」
+- 10–15s（账单截图）：「这是我去年交的，两万四。今年，我一分不花。」
+- 15–22s（立约）：「我没戒 AI。我把它搬进了自己的电脑。不联网，不花钱，不限次。」
+- 22–32s（录屏 S3）：「就一个软件，一个模型文件。我干这个的，信我。」
+- 32–46s（录屏 S4）：「写周报，改文案，答问题。一秒四十多个字——这是我家笔记本，不是什么服务器。」
+- 46–54s（算账）：「网页 AI 一年，两万四。自己跑一年，零。」
+- 54–60s（钩子）：「你的电脑能不能跑？评论区发配置，我告诉你能跑多大的。」
+
+## 分镜与素材
+
+| 镜号 | 时长 | 画面 | 素材方 |
+|---|---|---|---|
+| M1 工牌特写 | 0–5s | 遮好信息的工牌+脸，口播 | 用户：工牌（名字/工号/二维码贴住）、手机竖屏固定、补光 |
+| M2 放牌指己 | 5–10s | 同机位连录 | 用户（与 M1 一镜到底）；可选 B-roll：发布会/IFA 照片 |
+| M3 账单特写 | 10–15s | 账单截图滑动 | 用户：Cursor/即梦/token 截图 |
+| M4 立约 | 15–22s | 脸出镜+三连字卡 | 用户口播；字卡 AI 做 |
+| M5 快剪 | 22–32s | llama.cpp 启动录屏 | 已有 rec_primary.mp4 |
+| M6 演示 | 32–46s | 9B 生成+41.5 t/s | 已有 rec_primary.mp4 |
+| M7 算账 | 46–54s | 字卡 ¥24000→¥0 | AI 做 |
+| M8 钩子 | 54–60s | 脸出镜收尾 | 用户口播 |
+
+用户需拍：M1/M2/M4/M8 同 setup 一口气录（共 30s 口播）+ 账单截图；可选：发布会/展台照片 2–3 张做 M2 B-roll。
+
+## 验证状态
+
+⬜ 待用户确认型号公开性 + 拍摄三段真人镜头 + 账单截图
 EOF
+python - << 'PYEOF'
+import io
+p = r"G:\G_cursor\work-plan\QA.md"
+t = io.open(p, encoding="utf-8").read()
+entry = """## Q31 · 2026-10-04｜A2 工牌开场版分镜（用户提案采纳）
+
+**结论：举工牌开场是全片最强帧，采纳。红线：「O3+D10020」须确认已发布否则模糊化；工牌遮名字+工号+二维码；台词大众化「1200 亿参数塞进自研芯片」。8 镜分镜表+素材清单已定，用户只需拍 30s 口播+账单截图。**
+
+👉 执行细节：[details/Q31-A2工牌开场版分镜.md](details/Q31-A2工牌开场版分镜.md)
+
+---
+
+## Q30"""
+t = t.replace("## Q30", entry, 1)
+io.open(p, "w", encoding="utf-8", newline="\n").write(t)
+print("ok")
+PYEOF
 git add -A
-git commit -m "样片v3: 主显示器全屏录屏素材（rec_primary.mp4, 41.5t/s）" 2>&1 | tail -1
+git commit -m "Q31: A2工牌开场版（逐字稿+8镜分镜+素材清单+保密红线）" 2>&1 | tail -1
 for i in 1 2 3 4; do
   out=$(git push origin main 2>&1 | tail -1)
   echo "$out" | grep -q "main -> main\|up-to-date" && { echo PUSHED; break; }
@@ -16,5 +62,6 @@ for i in 1 2 3 4; do
   echo "$out" | grep -q "main -> main\|up-to-date" && { echo PUSHED_PROXY; break; }
   sleep 5
 done
-cd sample
-lark-cli drive +upload --file "A版样片_v3.mp4" --folder-token N9NDf7SzQlAMymdDmGQcAPewnK1 --name "A版样片_v3（主屏全屏录屏版）.mp4" 2>&1 | grep -E '"(ok|url)"' | head -2
+sed 's#](details/#](https://github.com/MQCCharness/work-plan/blob/main/details/#g' QA.md > _qa_feishu.md
+lark-cli docs +update --api-version v2 --doc "https://ecnbxf2wq712.feishu.cn/docx/YkFJdErLeoD2AQxjUkecoq0vnwg" --command overwrite --doc-format markdown --content @_qa_feishu.md 2>&1 | grep -E '"(ok|result)"' | head -2
+rm -f _qa_feishu.md
