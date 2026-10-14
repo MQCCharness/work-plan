@@ -1,40 +1,39 @@
 #!/bin/bash
 cd /g/G_cursor/work-plan || exit 1
-cat > details/Q36-商业闭环担心.md << 'EOF'
-# Q36 · 2026-10-13｜「Cube 人设/端侧部署没法商业闭环」的担心
+cat > details/Q37-KaCo汽车视频特效拆解.md << 'EOF'
+# Q37 · 2026-10-14｜KaCo 帕加尼视频特效拆解
 
-**结论：担心合理但问错了对象——人设和技能不需要闭环（招牌不收钱，柜台收），需要闭环的是服务和产品。端侧部署三层解剖：①一次性咨询闭环成立但天花板低（不复购）②「部署+月费维护」MRR 是真闭环（部署 1-3 万 + 维护 500-2000/月，10 客户=5000-2万/月底座；风向：数据合规+token 成本+一体机热销）③哈机密 C 端远期靠众筹验证。**
+**结论：该视频「特效感」几乎全部来自运镜+剪辑而非后期 VFX。七招词汇表：鱼眼桌面、画中画小屏、钻屏转场、甩镜转场（运动模糊当剪辑点）、浅景深微距、低机位环绕、色彩联动。可迁移三招：甩镜当剪辑点（字卡→录屏的硬切升级）、画中画小屏（哈机密线天然形态）、色彩联动（红底模板与内容主色呼应）。**
 
-## 要点
+## 视频档案
 
-- 闭环测试器=闲鱼挂单：闭环成立定义=有人付钱+交付完+愿意再付/转介绍；D+90 止损线就是干这个的
-- 已有水流信号：Q14 陌生人私信（带硬件需求找上门）
-- 最坏情况兜底：闭环失败时资产栈（爆款/案例/教程/人设/管线）整体平移到企业 AI 培训/顾问，人设不塌
-- 闭环答案在未来 90 天询单数里，不在推演里；我盯数字，用户发视频
+- 原片：@KaCo（只值3000）「6000月薪，真的到头了吗」29s/60fps/竖屏，帕加尼 Huayra @景枫车俱会
+- 本地副本 sample/ref/kaco.mp4；抽帧 ref/qc_tile_*.png（5fps 拼图墙）+ f_*.png（切点帧）
+- 结构：0–15s 鱼眼剪辑台叙事框架（月薪6000梗）→ 15.3s BTS 晒云台装备 → 15.8s 起正片
 
 ## 验证状态
 
-⬜ 验证中（D+90 止损线：零询单→换引擎）
+✅ 拆解完成；转场三招待融入后续视频模板
 EOF
 python - << 'PYEOF'
 import io
 p = r"G:\G_cursor\work-plan\QA.md"
 t = io.open(p, encoding="utf-8").read()
-entry = """## Q36 · 2026-10-13｜商业闭环担心：三层解剖 + 测试器已在跑
+entry = """## Q37 · 2026-10-14｜KaCo 帕加尼视频特效拆解
 
-**结论：人设技能不需闭环，服务产品才需要。端侧部署①一次性咨询闭环成立天花板低②「部署+月费维护」MRR 是真闭环（10 客户=5k-2万/月）③哈机密远期众筹。闭环测试器=闲鱼挂单+D+90 止损线；闭环失败资产栈可平移企业培训，人设不塌。**
+**结论：特效感来自运镜+剪辑而非 VFX。七招词汇表（鱼眼桌面/画中画小屏/钻屏转场/甩镜转场/浅景深微距/低机位环绕/色彩联动）；可迁移三招：甩镜当剪辑点、画中画小屏、色彩联动。**
 
-👉 执行细节：[details/Q36-商业闭环担心.md](details/Q36-商业闭环担心.md)
+👉 执行细节：[details/Q37-KaCo汽车视频特效拆解.md](details/Q37-KaCo汽车视频特效拆解.md)
 
 ---
 
-## Q35"""
-t = t.replace("## Q35", entry, 1)
+## Q36"""
+t = t.replace("## Q36", entry, 1)
 io.open(p, "w", encoding="utf-8", newline="\n").write(t)
 print("ok")
 PYEOF
 git add -A
-git commit -m "Q36: 商业闭环担心三层解剖（MRR部署+维护是真闭环）" 2>&1 | tail -1
+git commit -m "Q37: KaCo帕加尼视频特效拆解（运镜>后期VFX，可迁移三招）" 2>&1 | tail -1
 for i in 1 2 3 4; do
   out=$(git push origin main 2>&1 | tail -1)
   echo "$out" | grep -q "main -> main\|up-to-date" && { echo PUSHED; break; }
@@ -45,4 +44,4 @@ for i in 1 2 3 4; do
 done
 sed 's#](details/#](https://github.com/MQCCharness/work-plan/blob/main/details/#g' QA.md > _qa_feishu.md
 lark-cli docs +update --api-version v2 --doc "https://ecnbxf2wq712.feishu.cn/docx/YkFJdErLeoD2AQxjUkecoq0vnwg" --command overwrite --doc-format markdown --content @_qa_feishu.md 2>&1 | grep -E '"(ok|result)"' | head -2
-rm -f _qa_feishu.md
+rm -f _qa_feishu.md _ref.sh
